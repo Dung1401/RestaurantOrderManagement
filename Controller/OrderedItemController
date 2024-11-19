@@ -1,0 +1,20 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Controller;
+
+import Module.OrderedItem;
+
+/**
+ *
+ * @author jerrry
+ */
+public class OrderedItemController {
+    public static void placeOrder(OrderedItem ordereditem){
+        //create query
+        String query = "insert into OrderedItem(OrderID, name, price, quantity, total) values ("+ordereditem.getOrderID()+ ",'" + ordereditem.getName() + "','" + ordereditem.getPrice() + "','" + ordereditem.getQuantity()+"','"+ordereditem.getTotal()+"')";
+        //perform insert operation
+        dbops.updateQuery(query, "Order Complete!");
+    }
+}
