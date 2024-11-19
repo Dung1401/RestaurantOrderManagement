@@ -1,0 +1,45 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Controller;
+import java.awt.HeadlessException;
+import java.sql.*;
+import javax.swing.JOptionPane;
+/**
+ *
+ * @author jerrry
+ */
+public class dbops {
+    public static void updateQuery(String query, String msg){
+        try{
+            //fetch connection
+            Connection conn = ConnectDB.getConnection();
+            //create statement
+            Statement st = conn.createStatement();
+            //execute update
+            st.executeUpdate(query);
+            //display msg
+            if(!msg.equals("")){
+                JOptionPane.showMessageDialog(null, msg);
+            }
+        } catch (HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public static ResultSet selectQuery(String query){
+        try{
+            //Fetch connection
+            Connection conn =  ConnectDB.getConnection();
+            //create statement
+            Statement st = conn.createStatement();
+            //Result statement
+            ResultSet rs = st.executeQuery(query);
+            return rs;
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+    }
+}
