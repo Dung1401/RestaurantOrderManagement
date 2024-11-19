@@ -1,0 +1,4 @@
+create database menu; //use only once
+use menu;
+create table OrderedItem(orderedID int primary key,
+      Orderedname varchar(255), OrderedPrice varchar(255), Orderedquantity varchar(255), Orderedtotal varchar(255))
