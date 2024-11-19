@@ -1,0 +1,4 @@
+create database menu;
+use menu;
+create table food(int food_key primary key auto_increment,
+    food_name varchar(255), food_price varchar(255), food quantity varchar(255))auto_increment=1000;
