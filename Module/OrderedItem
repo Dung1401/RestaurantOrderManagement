@@ -1,0 +1,58 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Module;
+
+/**
+ *
+ * @author jerrry
+ */
+public class OrderedItem extends MenuOrder{
+    private int OrderedID;
+    private String Orderedname;
+    private String Orderedprice;
+    private String Orderedquantity;
+    private String Orderedtotal;
+    
+    @Override
+    public int getOrderID(){
+        return OrderedID;
+    }
+    @Override
+    public void setOrderID(int OrderedID){
+        this.OrderedID = OrderedID;
+    }
+    @Override
+    public String getName(){
+        return Orderedname;
+    }
+    @Override
+    public void setName(String Orderedname){
+        this.Orderedname = Orderedname;
+    }
+    @Override
+    public String getPrice(){
+        return Orderedprice;
+    }
+    @Override
+    public void setPrice(String Orderedprice){
+        this.Orderedprice = Orderedprice;
+    }
+    @Override
+    public String getQuantity(){
+        return Orderedquantity;
+    }
+    @Override
+    public void setQuantity(String Orderedquantity){
+        this.Orderedquantity = Orderedquantity;
+    }
+    @Override
+    public String getTotal(){
+        return Orderedtotal;
+    }
+    @Override
+    public void setTotal(String Orderedtotal){
+        this.Orderedtotal = Orderedtotal;
+    }
+}
