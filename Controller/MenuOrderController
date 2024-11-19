@@ -1,0 +1,35 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Controller;
+
+import Module.MenuOrder;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author jerrry
+ */
+public class MenuOrderController {
+    public static void addOrder(MenuOrder menuorder){
+        //create query
+        String query = "insert into MenuOrder(OrderID, name, price, quantity, total) values ("+menuorder.getOrderID()+ ",'" + menuorder.getName() + "','" + menuorder.getPrice() + "','" + menuorder.getQuantity()+"','"+menuorder.getTotal()+"')";
+        //perform insert operation
+        dbops.updateQuery(query, "Added New Order!");
+    }
+    
+    public static void updateOrder(String name, String quantity, String total ){
+        String query = "update MenuOrder set total ='" +total+"', quantity='"+quantity+"'where name='"+name+"'";
+        try{
+            dbops.updateQuery(query, "Updated Order complete!");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public static void deleteOrder(String name){
+        String query = "delete from MenuOrder where name='"+name+"'";
+        dbops.updateQuery(query, "Deleted Order Complete!");
+    }
+}
