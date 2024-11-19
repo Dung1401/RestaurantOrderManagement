@@ -1,0 +1,35 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Controller;
+import Module.Food;
+import java.util.ArrayList;
+import java.sql.*;
+import javax.swing.JOptionPane;
+/**
+ *
+ * @author jerrry
+ */
+public class FoodController{
+    public static void addFood(Food food){
+        //create query
+        String query = "insert into food(food_key, food_name, food_price, food_quantity) values ("+food.getFood_key()+ ",'" + food.getFood_name() + "','" + food.getFood_price() + "','" + food.getFood_quantity()+"')";
+        //perform insert operation
+        dbops.updateQuery(query, "Added New Food!");
+    }
+    
+    public static void updateFood(String food_name, String food_price, String food_key){
+        String query = "update food set food_name ='" +food_name+"', food_price ='"+food_price+"' where food_key="+food_key+"";
+        try{
+            dbops.updateQuery(query, "Updated food name!");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public static void deleteFood(String food_key){
+        String query = "delete from food where food_key="+food_key+"";
+        dbops.updateQuery(query, "Deleted food!");
+    }
+}
