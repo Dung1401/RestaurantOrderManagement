@@ -1,0 +1,37 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Controller;
+
+import Module.Manager;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author jerrry
+ */
+public class ManagerController {
+    public static void addManager(Manager manager){
+        //create query
+        String query = "insert into Manager(ManagerID, ManagerName, ManagerEmail, ManagerPass) values ("+manager.getManagerID()+ ",'" + manager.getManagerName() + "','" + manager.getManagerEmail() + "','" + manager.getManagerPass()+"')";
+        //perform insert operation
+        dbops.updateQuery(query, "Sign Up Complete!");
+    }
+    
+    public static Boolean validateManager(String email, String pass){
+        boolean validate = false;
+        try{
+            String query = "select * from Manager where ManagerEmail='"+email+"'and ManagerPass='"+pass+"'";
+            ResultSet rs = dbops.selectQuery(query);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Login Complete!");
+                validate = true;
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Wrong username and password!");
+        }
+        return validate;
+    }
+}
