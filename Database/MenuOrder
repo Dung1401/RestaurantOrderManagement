@@ -1,0 +1,4 @@
+create database menu; //use only once
+use menu;
+create table MenuOrder(OrderID int primary key auto_increment,
+      name varchar(255), price varchar(255), quantity varchar(255), total varchar(255))auto_increment=1;
