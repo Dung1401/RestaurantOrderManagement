@@ -1,0 +1,4 @@
+create database menu; //use only once
+use menu;
+create table manager(ManagerID int primary key auto_increment,
+      ManagerName varchar(255), ManagerPass varchar(255), ManagerEmail varchar(255))auto_increment=1000;
