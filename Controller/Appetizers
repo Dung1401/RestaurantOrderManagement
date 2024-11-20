@@ -4,21 +4,21 @@
  */
 package Controller;
 import Module.Food;
-import java.util.ArrayList;
 import java.sql.*;
 import javax.swing.JOptionPane;
 /**
  *
  * @author jerrry
  */
-public class FoodController{
-    public static void addFood(Food food){
+public class Apetizers extends Food{
+    private final String apetizers_category;
+    public static void addFood(int food_key, String food_name, String food_price, String food_quantity, String apetizers_category){
         //create query
-        String query = "insert into food(food_key, food_name, food_price, food_quantity) values ("+food.getFood_key()+ ",'" + food.getFood_name() + "','" + food.getFood_price() + "','" + food.getFood_quantity()+"')";
+        String query = "insert into food(food_key, food_name, food_price, food_quantity, food_category) values ("+food_key+ ",'" +food_name+ "','" +food_price+ "','" +food_quantity+"','"+apetizers_category+"')";
         //perform insert operation
-        dbops.updateQuery(query, "Added New Food!");
+        dbops.updateQuery(query, "Added Apetizers!");
     }
-    
+  
     public static void updateFood(String food_name, String food_price, String food_key){
         String query = "update food set food_name ='" +food_name+"', food_price ='"+food_price+"' where food_key="+food_key+"";
         try{
@@ -31,5 +31,10 @@ public class FoodController{
     public static void deleteFood(String food_key){
         String query = "delete from food where food_key="+food_key+"";
         dbops.updateQuery(query, "Deleted food!");
+    }
+
+    public Apetizers(int food_key, String food_name, String food_price, String food_quantity, String apetizers_category) {
+        super(food_key, food_name, food_price, food_quantity);
+        this.apetizers_category = apetizers_category;
     }
 }
