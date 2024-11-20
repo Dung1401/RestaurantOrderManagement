@@ -9,11 +9,12 @@ package Module;
  *
  * @author jerrry
  */
-public class Food {
+public abstract class Food {
     private int food_key;
     private String food_name;
     private String food_price;
     private String food_quantity;
+    private String category;
     
     public int getFood_key(){
         return food_key;
@@ -44,6 +45,21 @@ public class Food {
     }
     
     public void setFood_quantity(String food_quantity){
+        this.food_quantity = food_quantity;
+    }
+    
+    public String getFood_category(){
+        return category;
+    }
+    
+    public void setFood_category(String category){
+        this.category= category;
+    }
+    
+    public Food(int food_key, String food_name, String food_price, String food_quantity){
+        this.food_key = food_key;
+        this.food_name = food_name;
+        this.food_price = food_price;
         this.food_quantity = food_quantity;
     }
 }
