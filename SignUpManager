@@ -148,16 +148,24 @@ public class SignUpManager extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         // TODO add your handling code here:
-        //create new food
-        Manager manager = new Manager();
-        //get the name from the text fields
-        manager.setManagerName(jTextField1.getText());
-        manager.setManagerEmail(jTextField2.getText());
-        manager.setManagerPass(jTextField3.getText());
-        key_auto();
-        //execute add operation
-        ManagerController.addManager(manager);
-        key_auto();
+        String email = jTextField2.getText();
+        boolean dup = ManagerController.duplicationSignUp(email);
+        if(dup){
+            //create new food
+            Manager manager = new Manager();
+            //get the name from the text fields
+            manager.setManagerName(jTextField1.getText());
+            manager.setManagerEmail(jTextField2.getText());
+            manager.setManagerPass(jTextField3.getText());
+            key_auto();
+            //execute add operation
+            ManagerController.addManager(manager);
+            key_auto();
+        }else{
+            JOptionPane.showMessageDialog(null, "please use another email");
+            jTextField2.setText("");
+        }
+        
     }                                        
 
     /**
