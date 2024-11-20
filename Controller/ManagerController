@@ -34,4 +34,28 @@ public class ManagerController {
         }
         return validate;
     }
+    
+    public static Boolean LogOut(){
+        boolean confirm = false;
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to log out?", "Do you want to log out?", JOptionPane.YES_NO_OPTION);
+        if(a == 0){
+            JOptionPane.showMessageDialog(null, "Log out complete.");
+            confirm = true;
+        }
+        return confirm;
+    }
+    
+    public static boolean duplicationSignUp(String ManagerEmail){
+        boolean dup = false;
+        try{
+            String query = "select ManagerEmail from Manager where ManagerEmail='"+ManagerEmail+"'";
+            ResultSet rs = dbops.selectQuery(query);
+            if(!rs.next()){
+                dup = true;
+            }
+        }catch(Exception e){
+            
+        }
+        return dup;
+    }
 }
