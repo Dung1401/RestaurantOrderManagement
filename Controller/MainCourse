@@ -1,0 +1,41 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Controller;
+import Module.Food;
+import java.sql.*;
+import javax.swing.JOptionPane;
+/**
+ *
+ * @author jerrry
+ */
+public class MainCourse extends Food{
+    private final String category;
+    public static void addFood(int food_key, String food_name, String food_price, String food_quantity, String category){
+        category = "main course";
+        //create query
+        String query = "insert into food(food_key, food_name, food_price, food_quantity, food_category) values ("+food_key+ ",'" +food_name+ "','" +food_price+ "','" +food_quantity+"','"+category+"')";
+        //perform insert operation
+        dbops.updateQuery(query, "Added Main Course!");
+    }
+  
+    public static void updateFood(String food_name, String food_price, String food_key){
+        String query = "update food set food_name ='" +food_name+"', food_price ='"+food_price+"' where food_key="+food_key+"";
+        try{
+            dbops.updateQuery(query, "Updated food name!");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public static void deleteFood(String food_key){
+        String query = "delete from food where food_key="+food_key+"";
+        dbops.updateQuery(query, "Deleted food!");
+    }
+
+    public MainCourse(int food_key, String food_name, String food_price, String food_quantity, String category) {
+        super(food_key, food_name, food_price, food_quantity);
+        this.category = category;
+    }
+}
